@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
+//Route::view('/', 'welcome')->name('home');
+Route::view('/', 'dashboard.home')->name('home');
+
+Route::resource('authors', AuthorController::class)->only(['index', 'show']);
+Route::resource('cars', CarController::class)->only(['index', 'show']);
+Route::resource('locations', LocationController::class)->only(['index', 'show']);
+Route::resource('posts', PostController::class)->only(['index', 'show']);

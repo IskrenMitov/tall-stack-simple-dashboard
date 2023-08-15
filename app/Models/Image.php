@@ -18,7 +18,8 @@ class Image extends Model
     protected $fillable = [
         'name',
         'alt',
-        'is_favorite'
+        'is_favorite',
+        'url'
     ];
 
     /**

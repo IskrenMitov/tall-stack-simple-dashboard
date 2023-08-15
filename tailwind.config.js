@@ -4,8 +4,11 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+                sans: ['Raleway Medium', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'hero-pattern': "url('/assets/img/background-min.png')"
+            }
         },
     },
     variants: {
