@@ -19,7 +19,9 @@ class Image extends Model
         'name',
         'alt',
         'is_favorite',
-        'url'
+        'url',
+        'imageable_type',
+        'imageable_id',
     ];
 
     /**

@@ -23,5 +23,5 @@ Route::view('/', 'dashboard.home')->name('home');
 
 Route::resource('authors', AuthorController::class)->only(['index', 'show']);
 Route::resource('cars', CarController::class)->only(['index', 'show']);
-Route::resource('locations', LocationController::class)->only(['index', 'show']);
+Route::resource('locations', LocationController::class)->only(['index']);
 Route::resource('posts', PostController::class)->only(['index', 'show']);

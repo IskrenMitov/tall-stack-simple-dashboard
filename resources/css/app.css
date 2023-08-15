@@ -32,6 +32,13 @@
     backdrop-filter: blur(25px);
 }
 
+.table-bg {
+    height: 720px;
+    width: auto;
+    flex-shrink: 0;
+    border-radius: 8px;
+}
+
 .gallery-image {
     border-radius: 8px;
     margin-left: 48px;
@@ -148,7 +155,19 @@
     height: 40px;
 }
 
+/**
+ * Modal
+ */
 
+.custom-modal {
+    width: 560px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background-image: url("/public/assets/img/background-min.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(25px);
+}
 
 
 

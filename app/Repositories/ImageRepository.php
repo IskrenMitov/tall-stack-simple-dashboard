@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Facades\Storage;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 use App\Models\Image;
 
@@ -32,4 +33,35 @@ class ImageRepository extends BaseRepository
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-MwWsSR2h0R-unE6xhnybdp_vHResjwttPPUQiryaTDyV3hac8cwbIKRnybLb5tioCeY&usqp=CAU',
         'https://www.usnews.com/object/image/00000185-88e0-dcf2-a7ef-ddf4d4390001/10-2023-honda-cr-v-sport-touring.jpeg?update-time=1673038713597&size=responsive640'
     ];
+
+    /**
+     * @param mixed $image
+     * @return string
+     * @throws \Exception
+     */
+    public function uploadToStorage(mixed $image): string
+    {
+        $bucket = '/testing/tall/' . now()->timestamp . '' . random_int(1000, 9999);
+        $filename = Storage::disk('digitalocean')->put($bucket , $image, 'public');
+
+        return 'https://atentio.ams3.cdn.digitaloceanspaces.com/'. $filename;
+    }
+
+    /**
+     * @param string $url
+     * @param string $type
+     * @param int $id
+     * @return Image
+     */
+    public function storeImage(string $url, string $type, int $id): Image
+    {
+        return Image::create([
+            'url' => $url,
+            'name' => '',
+            'alt' => '',
+            'is_favorite' => false,
+            'imageable_type' => $type,
+            'imageable_id' => $id
+        ]);
+    }
 }
