@@ -46,7 +46,7 @@ This project is a Laravel-based dashboard built using the TALL (Tailwind CSS, Al
 
 **Note**: The project uses DigitalOcean for Database & File Storage.
 *You can override the Database configuration with your own inside the .env file. 
-If you want to use the testing DDBB and Storage configuration files, please request access from the author.*
+If you want to use the testing DDBB and Storage configuration files, please request access from the author providing your IP address because Database configuration has Trusted Sources feature enabled.*
 
 
 ## Usage
