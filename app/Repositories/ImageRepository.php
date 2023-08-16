@@ -15,7 +15,7 @@ class ImageRepository extends BaseRepository
      * @return string
      *  Return the model
      */
-    public function model()
+    public function model(): string
     {
         return Image::class;
     }
