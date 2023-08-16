@@ -16,7 +16,7 @@ This project is a Laravel-based dashboard built using the TALL (Tailwind CSS, Al
 1. Clone the repository:
    ```sh
    git clone https://github.com/IskrenMitov/tall-stack-simple-dashboard.git
-   cd your-dashboard
+   cd tall-stack-simple-dashboard
 
 2. Install composer dependencies:
     ```sh
