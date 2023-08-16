@@ -1,6 +1,6 @@
 <div>
     <div class="gallery-bg overflow-auto">
-        <div class="grid grid-cols-2 md:grid-cols-3 sm:grid-cols-1 gallery-layout" x-data="{ show: false }">
+        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gallery-layout" x-data="{ show: false }">
             @foreach($images as $image)
                 <div class="gallery-image relative aspect-square max-w-sm">
                     <img class="h-full w-auto object-cover rounded-lg" src="{{ $image->url }}" alt="{{ $image->alt }}">
