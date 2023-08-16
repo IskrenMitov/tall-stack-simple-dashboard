@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Image;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
+use \Illuminate\Contracts\View\View;
 
 class ImageGallery extends Component
 {
@@ -19,13 +20,20 @@ class ImageGallery extends Component
 
     protected $listeners = ['imageUploaded'];
 
-    public function mount($instance) {
+    /**
+     * @param $instance
+     * @return void
+     */
+    public function mount($instance): void
+    {
         $this->images = $instance->images()->get();
     }
 
 
-
-    public function render()
+    /**
+     * @return View
+     */
+    public function render(): View
     {
         return view('livewire.image-gallery');
     }
@@ -36,13 +44,14 @@ class ImageGallery extends Component
      */
     public function like(Image $image): void
     {
-        foreach ($this->images as $original) {
-            if ($original->id == $image->id) {
+        $this->images->transform(function ($original) use ($image) {
+            if ($original->id === $image->id) {
                 $original->is_favorite = ! $original->is_favorite;
-                $image->is_favorite = ! $image->is_favorite;
-                $image->save();
             }
-        }
+            return $original;
+        });
+        $image->is_favorite = ! $image->is_favorite;
+        $image->save();
     }
 
     /**
@@ -71,23 +80,13 @@ class ImageGallery extends Component
      */
     public function update(int $image_id): void
     {
-        $image = Image::findOrFail($image_id);
-
         $this->validate([
             'name' => 'string|max:255',
             'alt' => 'string|max:255'
         ]);
 
-        foreach ($this->images as $original) {
-            if ($original->id == $image->id) {
-                $original->name = $this->name;
-                $original->alt = $this->alt;
-
-                $image->name = $this->name;
-                $image->alt = $this->alt;
-                $image->save();
-            }
-        }
+        $image = $this->findImageById($image_id);
+        $this->updateImageProperties($image);
         $this->showModal = false;
     }
 
@@ -97,11 +96,7 @@ class ImageGallery extends Component
      */
     public function delete(Image $image): void
     {
-        foreach ($this->images as $key => $original) {
-            if ($original->id == $image->id) {
-                unset($this->images[$key]);
-            }
-        }
+        $this->images = $this->images->reject(fn ($item) => $item->id === $image->id);
         $image->delete();
     }
 
@@ -113,4 +108,34 @@ class ImageGallery extends Component
     {
         $this->images->push($image);
     }
+
+    /**
+     * @param int $image_id
+     * @return Image
+     */
+    private function findImageById(int $image_id): Image
+    {
+        return Image::findOrFail($image_id);
+    }
+
+    /**
+     * @param Image $image
+     * @return void
+     */
+    private function updateImageProperties(Image $image): void
+    {
+        $image->update([
+            'name' => $this->name,
+            'alt' => $this->alt,
+        ]);
+
+        $this->images = $this->images->map(function ($item) use ($image) {
+            if ($item->id === $image->id) {
+                $item->name = $this->name;
+                $item->alt = $this->alt;
+            }
+            return $item;
+        });
+    }
+
 }
