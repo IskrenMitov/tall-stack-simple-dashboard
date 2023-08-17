@@ -28,7 +28,7 @@
                         @endif
                     </button>
 
-                    <div class="-mt-20 h-20 w-full shadow-lg align-middle rounded-lg text-center overflow-hidden backdrop-blur-md">
+                    <div class="-mt-20 h-20 w-full shadow-lg align-middle rounded-lg text-center">
                         <div class="grid grid-cols-2 grid-rows-1 gap-0 content-center pt-5 gallery-buttons">
                             <button wire:click="showEditModal({{ $image }})" class="btn-info rounded-full px-5 py-2.5 mr-2 mb-2">
                                 Manage
