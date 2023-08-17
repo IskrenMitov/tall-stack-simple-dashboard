@@ -17,7 +17,7 @@
                 </thead>
                 <tbody>
                 @foreach($locations as $location)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="border-b bg-gray-800 border-gray-700">
                         <td scope="row" class="px-6 py-4 font-body">{{ $location->name }}</td>
                         <td>
                             -
