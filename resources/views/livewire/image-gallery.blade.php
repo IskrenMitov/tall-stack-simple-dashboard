@@ -45,13 +45,12 @@
     @if($showModal)
         <!-- Main modal -->
         <div id="update-modal" tabindex="-1" aria-hidden="true"
-             class="absolute h-screen flex justify-center items-center w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0"
-             x-on:click.outside="$wire.hideEditModal()">
+             class="absolute h-screen flex justify-center items-center w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0">
             <div class="relative w-full max-w-md">
                 <!-- Modal content -->
                 <div class="relative custom-modal">
                     <div class="backdrop-blur-md rounded-lg">
-                        <button type="button" x-on:click="$wire.hideEditModal()" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="authentication-modal">
+                        <button type="button" wire:click="hideEditModal()" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="authentication-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                             </svg>
