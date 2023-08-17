@@ -1,0 +1,21 @@
+{
+  "public/assets/img/background-min.png": {
+    "file": "assets/background-min-450e8053.png",
+    "src": "public/assets/img/background-min.png"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-5ff25b75.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-69332da4.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-a595ea0c.css",
+    "isEntry": true,
+    "src": "resources/sass/app.scss"
+  }
+}
