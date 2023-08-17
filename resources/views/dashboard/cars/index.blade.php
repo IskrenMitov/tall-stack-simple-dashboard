@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                 @foreach($cars as $car)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="border-b bg-gray-800 border-gray-700">
                         <td scope="row" class="px-6 py-4 font-body">{{ $car->brand }}</td>
                         <td class="font-body">{{ $car->model }}</td>
                         <td>
